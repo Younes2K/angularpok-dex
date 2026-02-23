@@ -1,0 +1,13 @@
+<div
+  *ngIf="isLoading$ | async"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-white/60 dark:bg-slate-900/60 backdrop-blur-sm"
+  role="status"
+  aria-label="Chargement en cours">
+  <div class="flex flex-col items-center gap-4">
+    <div class="relative w-16 h-16">
+      <div class="absolute inset-0 rounded-full border-4 border-primary-200 dark:border-primary-800"></div>
+      <div class="absolute inset-0 rounded-full border-4 border-transparent border-t-primary-600 animate-spin"></div>
+    </div>
+    <p class="text-slate-600 dark:text-slate-400 font-medium text-sm">Chargement...</p>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<main class="animate-fade-in">
+  <section class="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-primary-700 via-primary-800 to-indigo-900 dark:from-slate-950 dark:via-primary-950 dark:to-indigo-950">
+    <div class="absolute inset-0 bg-dot-grid pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div class="absolute -top-48 -right-48 w-[500px] h-[500px] bg-primary-400/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-48 -left-48 w-[600px] h-[600px] bg-indigo-400/15 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/3 left-1/3 w-[400px] h-[400px] bg-primary-300/10 rounded-full blur-2xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-16 items-center">
+      <div class="text-center lg:text-left animate-slide-up">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/10">
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          <span class="text-white/90 text-sm font-medium tracking-wide">Pokédex — 1025 Pokémon référencés</span>
+        </div>
+
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+          Le Pokédex
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-primary-200 to-indigo-300">
+            nouvelle génération
+          </span>
+        </h1>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <button
+            (click)="goToPokemon()"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-700 font-bold rounded-2xl hover:bg-slate-50 active:scale-95 transition-all duration-200 shadow-xl text-lg">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+            </svg>
+            Accéder au Pokédex
+          </button>
+          <button
+            (click)="goToSearch()"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 active:scale-95 transition-all duration-200 text-lg">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            Rechercher
+          </button>
+        </div>
+      </div>
+
+      <div class="hidden lg:flex justify-center items-center">
+        <div class="relative w-80 h-80">
+          <div class="absolute inset-0 rounded-full border border-white/10 animate-pulse-slow"></div>
+          <div class="absolute inset-8 rounded-full border border-white/10 animate-pulse-slow" style="animation-delay: 0.8s"></div>
+          <div class="absolute inset-16 rounded-full border-2 border-white/20"></div>
+
+          <svg viewBox="0 0 200 200" class="absolute inset-0 w-full h-full opacity-25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="100" cy="100" r="94" stroke="white" stroke-width="3"/>
+            <path d="M6 100 A94 94 0 0 1 194 100 Z" fill="white" opacity="0.8"/>
+            <line x1="6" y1="100" x2="194" y2="100" stroke="white" stroke-width="3"/>
+            <circle cx="100" cy="100" r="26" stroke="white" stroke-width="3" fill="none"/>
+            <circle cx="100" cy="100" r="14" fill="white" opacity="0.6"/>
+          </svg>
+
+          <div class="absolute top-6 right-0 px-4 py-2 rounded-full bg-orange-500/25 border border-orange-400/30 backdrop-blur-sm">
+            <span class="text-orange-200 text-sm font-bold tracking-wide">Feu</span>
+          </div>
+          <div class="absolute bottom-8 left-0 px-4 py-2 rounded-full bg-blue-500/25 border border-blue-400/30 backdrop-blur-sm">
+            <span class="text-blue-200 text-sm font-bold tracking-wide">Eau</span>
+          </div>
+          <div class="absolute top-1/2 -translate-y-1/2 -right-6 px-4 py-2 rounded-full bg-green-500/25 border border-green-400/30 backdrop-blur-sm">
+            <span class="text-green-200 text-sm font-bold tracking-wide">Plante</span>
+          </div>
+          <div class="absolute top-0 left-1/4 px-4 py-2 rounded-full bg-violet-500/25 border border-violet-400/30 backdrop-blur-sm">
+            <span class="text-violet-200 text-sm font-bold tracking-wide">Psy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 relative overflow-hidden bg-gradient-to-br from-primary-700 to-indigo-800 dark:from-slate-900 dark:to-indigo-950">
+    <div class="absolute inset-0 bg-dot-grid pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-extrabold text-white mb-4">Accédez au Pokédex complet</h2>
+      <p class="text-white/60 text-lg mb-10 max-w-xl mx-auto">
+        Toutes les données issues de la PokéAPI, présentées dans une interface claire et rapide.
+      </p>
+      <button
+        (click)="goToPokemon()"
+        class="inline-flex items-center gap-2 px-10 py-4 bg-white text-primary-700 font-bold rounded-2xl hover:bg-slate-50 active:scale-95 transition-all duration-200 shadow-xl text-lg">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+        </svg>
+        Voir tous les Pokémon
+      </button>
+    </div>
+  </section>
+</main>

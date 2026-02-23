@@ -1,0 +1,76 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 animate-fade-in">
+  <div class="mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+    <div>
+      <h1 class="text-4xl font-extrabold text-slate-800 dark:text-white mb-2">Pokédex</h1>
+      <p class="text-slate-500 dark:text-slate-400">
+        <span *ngIf="!state.loading">{{ state.total }} Pokémon disponibles</span>
+        <span *ngIf="state.loading">Chargement...</span>
+      </p>
+    </div>
+    <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">
+      Page {{ currentPage }} / {{ totalPages || '—' }}
+    </div>
+  </div>
+
+  <div *ngIf="state.error" class="flex flex-col items-center justify-center py-24 gap-4">
+    <div class="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center">
+      <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+      </svg>
+    </div>
+    <p class="text-slate-600 dark:text-slate-400 text-lg font-medium">{{ state.error }}</p>
+    <button (click)="retry()" class="btn-primary">Réessayer</button>
+  </div>
+
+  <app-pokemon-card-skeleton *ngIf="state.loading && !state.error" [count]="20"></app-pokemon-card-skeleton>
+
+  <div
+    *ngIf="!state.loading && !state.error"
+    class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+    <app-pokemon-card
+      *ngFor="let pokemon of state.pokemons; trackBy: trackByPokemon"
+      [pokemon]="pokemon">
+    </app-pokemon-card>
+  </div>
+
+  <nav
+    *ngIf="!state.loading && !state.error && totalPages > 1"
+    class="mt-12 flex items-center justify-center gap-2 flex-wrap"
+    aria-label="Pagination">
+    <button
+      (click)="changePage(currentPage - 1)"
+      [disabled]="currentPage === 1"
+      class="btn-secondary px-3 py-2 disabled:opacity-40 disabled:cursor-not-allowed"
+      aria-label="Page précédente">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <ng-container *ngFor="let page of pages">
+      <button
+        *ngIf="page !== -1; else ellipsis"
+        (click)="changePage(page)"
+        [class.bg-primary-600]="page === currentPage"
+        [class.text-white]="page === currentPage"
+        [class.border-primary-600]="page === currentPage"
+        [attr.aria-current]="page === currentPage ? 'page' : null"
+        class="btn-secondary min-w-[40px] px-3 py-2 font-semibold">
+        {{ page }}
+      </button>
+      <ng-template #ellipsis>
+        <span class="px-2 py-2 text-slate-400 dark:text-slate-500 font-bold">…</span>
+      </ng-template>
+    </ng-container>
+
+    <button
+      (click)="changePage(currentPage + 1)"
+      [disabled]="currentPage === totalPages"
+      class="btn-secondary px-3 py-2 disabled:opacity-40 disabled:cursor-not-allowed"
+      aria-label="Page suivante">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </nav>
+</div>

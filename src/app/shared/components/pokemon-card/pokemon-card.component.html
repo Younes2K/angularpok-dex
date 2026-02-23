@@ -1,0 +1,45 @@
+<div
+  (click)="navigate()"
+  (keyup.enter)="navigate()"
+  tabindex="0"
+  role="button"
+  [attr.aria-label]="'Voir détail de ' + (pokemon.name | capitalize)"
+  class="card card-hover cursor-pointer group overflow-hidden outline-none focus:ring-2 focus:ring-primary-500 animate-slide-up">
+
+  <div class="relative bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 p-6 flex items-center justify-center min-h-[180px]">
+    <span class="absolute top-3 left-3 text-xs font-bold text-slate-400 dark:text-slate-500 tracking-widest">
+      #{{ paddedId }}
+    </span>
+
+    <button
+      (click)="toggleFavorite($event)"
+      [attr.aria-label]="isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'"
+      class="absolute top-3 right-3 p-1 rounded-lg hover:bg-white/50 dark:hover:bg-slate-600/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500">
+      <svg class="w-5 h-5 transition-colors duration-200"
+        [class.text-red-500]="isFavorite"
+        [class.text-slate-300]="!isFavorite"
+        fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+    </button>
+
+    <img
+      [src]="pokemon.image"
+      [alt]="pokemon.name | capitalize"
+      loading="lazy"
+      class="w-32 h-32 object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-300" />
+  </div>
+
+  <div class="p-4">
+    <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 capitalize">
+      {{ pokemon.name | capitalize }}
+    </h3>
+    <div class="flex flex-wrap gap-1.5">
+      <span
+        *ngFor="let type of pokemon.types"
+        class="badge type-{{ type }}">
+        {{ type | capitalize }}
+      </span>
+    </div>
+  </div>
+</div>

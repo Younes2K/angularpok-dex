@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-slate-50 text-slate-800 transition-colors duration-300;
+  }
+
+  body.dark {
+    @apply bg-slate-900 text-slate-100;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 active:scale-95 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 active:scale-95 transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white dark:bg-slate-800 rounded-2xl shadow-card border border-slate-100 dark:border-slate-700 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold uppercase tracking-wide;
+  }
+
+  .skeleton {
+    @apply bg-slate-200 dark:bg-slate-700 rounded-xl animate-pulse;
+  }
+
+  .bg-dot-grid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .bg-dot-grid-dark {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
+
+.type-normal { @apply bg-slate-400 text-white; }
+.type-fire { @apply bg-orange-500 text-white; }
+.type-water { @apply bg-blue-500 text-white; }
+.type-electric { @apply bg-yellow-400 text-slate-900; }
+.type-grass { @apply bg-green-500 text-white; }
+.type-ice { @apply bg-cyan-400 text-white; }
+.type-fighting { @apply bg-red-700 text-white; }
+.type-poison { @apply bg-purple-500 text-white; }
+.type-ground { @apply bg-amber-600 text-white; }
+.type-flying { @apply bg-indigo-400 text-white; }
+.type-psychic { @apply bg-pink-500 text-white; }
+.type-bug { @apply bg-lime-500 text-white; }
+.type-rock { @apply bg-stone-500 text-white; }
+.type-ghost { @apply bg-violet-700 text-white; }
+.type-dragon { @apply bg-violet-600 text-white; }
+.type-dark { @apply bg-slate-800 text-white; }
+.type-steel { @apply bg-slate-500 text-white; }
+.type-fairy { @apply bg-pink-400 text-white; }
